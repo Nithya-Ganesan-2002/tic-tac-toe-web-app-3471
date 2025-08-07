@@ -1,0 +1,190 @@
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #424242;
+  --accent-color: #f9a825;
+  --board-border: #dedede;
+  --board-bg: #f9f9f9;
+  --cell-size: 90px;
+  --cell-lg: 120px;
+  --score-x-color: var(--primary-color);
+  --score-o-color: var(--secondary-color);
+  --win-cell-color: var(--accent-color);
+}
+
+.ttt-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 70vh;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0.5rem 1.6rem;
+  min-width: 55px;
+  border-radius: 0.85rem;
+  background: var(--board-bg);
+  border: 2px solid var(--board-border);
+  transition: box-shadow 0.15s;
+  box-shadow: 0 6px 28px 0 rgba(31, 30, 56, 0.04);
+}
+.score-x span:first-child {
+  color: var(--score-x-color);
+  font-weight: 700;
+}
+.score-o span:first-child {
+  color: var(--score-o-color);
+  font-weight: 700;
+}
+.score span:last-child {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+.game-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.status-bar {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  min-height: 2rem;
+}
+.turn-indicator-x {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.turn-indicator-o {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.winner {
+  color: var(--win-cell-color);
+  font-weight: 700;
+  font-size: 1.14em;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-template-rows: repeat(3, var(--cell-size));
+  gap: 0.35rem;
+  background: var(--board-bg);
+  border-radius: 1.3rem;
+  border: 3px solid var(--board-border);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 26px 0 rgba(31, 30, 56, 0.06);
+  transition: border-color 0.15s;
+}
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background: white;
+  border: 2.2px solid var(--board-border);
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  font-size: 2.35rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--secondary-color);
+  box-shadow: 0 2px 6px 0 rgba(31, 30, 56, 0.02);
+  position: relative;
+  user-select: none;
+  transition: background 0.12s, border-color 0.13s, color 0.14s;
+}
+.cell:disabled {
+  background: #f0f0f0;
+  cursor: default;
+  color: #b5b5b5;
+}
+
+.cell-x {
+  color: var(--primary-color);
+}
+
+.cell-o {
+  color: var(--secondary-color);
+}
+
+.win-cell {
+  background: var(--accent-color);
+  color: #fff !important;
+  border-color: var(--accent-color);
+}
+
+.game-controls {
+  margin-top: 0.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.restart-btn {
+  font-size: 1.1rem;
+  padding: 0.6rem 2.1rem;
+  border-radius: 0.85rem;
+  border: none;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+  transition: background 0.18s, box-shadow 0.13s;
+  margin: 0;
+  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.11);
+  cursor: pointer;
+  outline: none;
+}
+.restart-btn:hover,
+.restart-btn:focus-visible {
+  background: var(--accent-color);
+  color: var(--secondary-color);
+  box-shadow: 0 7px 20px 0 rgba(249, 168, 37, 0.14);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .ttt-board {
+    grid-template-columns: repeat(3, calc(var(--cell-size) * 0.7));
+    grid-template-rows: repeat(3, calc(var(--cell-size) * 0.7));
+    padding: 0.4rem;
+  }
+  .cell {
+    width: calc(var(--cell-size) * 0.7);
+    height: calc(var(--cell-size) * 0.7);
+    font-size: 1.5rem;
+  }
+  .restart-btn {
+    padding: 0.45rem 1.1rem;
+    font-size: 1em;
+  }
+  .score {
+    padding: 0.35rem 0.8rem;
+    font-size: 1em;
+    min-width: 36px;
+  }
+  .score span:last-child {
+    font-size: 1.15rem;
+  }
+}

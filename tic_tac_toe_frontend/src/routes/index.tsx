@@ -1,21 +1,26 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useStyles$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { TicTacToe } from "../components/TicTacToe";
+import TicTacToeCSS from "../components/TicTacToe.css?inline";
 
 // PUBLIC_INTERFACE
 export default component$(() => {
+  useStyles$(TicTacToeCSS);
   return (
-    <div class="page-container">
-      <h1 class="main-title">tic_tac_toe_frontend is being generated</h1>
+    <div class="page-container" style="min-height: 100vh;">
+      <main>
+        <TicTacToe />
+      </main>
     </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: "tic_tac_toe_frontend",
+  title: "Tic Tac Toe Game",
   meta: [
     {
       name: "description",
-      content: "Ultralight Qwik template",
+      content: "Play a modern, interactive game of Tic Tac Toe.",
     },
   ],
 };

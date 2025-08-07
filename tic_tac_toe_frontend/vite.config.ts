@@ -53,7 +53,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
       },
       port: 3000,
       host: '0.0.0.0',
-      allowedHosts: ['.kavia.ai'],
+      // removed invalid allowedHosts property
     },
     preview: {
       headers: {
